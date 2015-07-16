@@ -7,19 +7,14 @@ import "fmt"
 import "strconv"
 
 func main() {
-    a, err := strconv.Atoi(os.Args[1])
-
-    if err != nil {
-        fmt.Println(err)
-        os.Exit(2)
+    if len(os.Args) < 3 {
+        fmt.Println("You must provide 2 distinct numbers as arguments to the program")
+        os.Exit(3)
     }
 
-    b, err := strconv.Atoi(os.Args[2])
+    a, _ := strconv.Atoi(os.Args[1])
 
-    if err != nil {
-        fmt.Println(err)
-        os.Exit(2)
-    }
+    b, _ := strconv.Atoi(os.Args[2])
 
     for {
         x := a % b
