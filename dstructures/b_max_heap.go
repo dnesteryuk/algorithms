@@ -1,22 +1,20 @@
 // This data structure is based on the binary heap
 // https://en.wikipedia.org/wiki/Binary_heap
-package main
+package dstructures
 
-import "fmt"
-
-type bMaxHeap struct {
+type heap struct {
     list []int
     N int
 }
 
-func (h *bMaxHeap) Insert(val int) {
+func (h *heap) Insert(val int) {
     h.list[h.N] = val
 
     h.Swim(h.N)
     h.N = h.N + 1
 }
 
-func (h *bMaxHeap) Swim(child int) {
+func (h *heap) Swim(child int) {
     parent := (child - 1) / 2
 
     if h.list[parent] < h.list[child] {
@@ -25,13 +23,13 @@ func (h *bMaxHeap) Swim(child int) {
     }
 }
 
-func (h *bMaxHeap) Swap(a, b int) {
+func (h *heap) Swap(a, b int) {
     temp := h.list[a]
     h.list[a] = h.list[b]
     h.list[b] = temp
 }
 
-func (h *bMaxHeap) deleteMax() {
+func (h *heap) deleteMax() {
     h.N = h.N - 1
 
     h.Swap(0, h.N)
@@ -41,7 +39,7 @@ func (h *bMaxHeap) deleteMax() {
     h.sink(0)
 }
 
-func (h bMaxHeap) sink(rootIndex int) {
+func (h heap) sink(rootIndex int) {
     childIndex := rootIndex * 2 + 1
 
     for childIndex <= h.N {
@@ -59,14 +57,18 @@ func (h bMaxHeap) sink(rootIndex int) {
     }
 }
 
-func main() {
-    arr := [13]int{89, 80, 69, 73, 44, 32, 43, 16, 62, 18}
-
-    h := bMaxHeap{list: arr[:], N: 10}
-
-    h.Insert(77)
-    h.Insert(52)
-    h.Insert(42)
-
-    fmt.Println("new list ", h.list)
+func BMaxHeap(list [] int, n int) heap {
+    return heap{list: list, N: n}
 }
+
+// func main() {
+//     arr := [13]int{89, 80, 69, 73, 44, 32, 43, 16, 62, 18}
+
+//     h := heap{list: arr[:], N: 10}
+
+//     h.Insert(77)
+//     h.Insert(52)
+//     h.Insert(42)
+
+//     fmt.Println("new list ", h.list)
+// }
