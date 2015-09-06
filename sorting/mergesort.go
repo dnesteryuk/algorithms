@@ -1,17 +1,14 @@
 // https://en.wikipedia.org/wiki/Merge_sort
+package sorting
 
-package main
-
-import "fmt"
-
-func sort(list []int) {
+func MergeSort(list []int) {
     length := len(list)
     cache  := make([]int, length)
 
-    mergeSort(list, cache, 0, length - 1)
+    Sort(list, cache, 0, length - 1)
 }
 
-func mergeSort(list []int, cache []int, lt, gt int) {
+func Sort(list []int, cache []int, lt, gt int) {
     if lt >= gt {
         return
     }
@@ -22,8 +19,8 @@ func mergeSort(list []int, cache []int, lt, gt int) {
     Splits the list on the left and right parts
     to sort them separately.
     */
-    mergeSort(list, cache, lt, mid)
-    mergeSort(list, cache, mid + 1, gt)
+    Sort(list, cache, lt, mid)
+    Sort(list, cache, mid + 1, gt)
 
     /*
     Merges the left and right part together.
@@ -32,10 +29,10 @@ func mergeSort(list []int, cache []int, lt, gt int) {
     Example of the list on this step:
       [4,5,9, 1,6,7]
     */
-    merge(list, cache, lt, mid, gt)
+    Merge(list, cache, lt, mid, gt)
 }
 
-func merge(list []int, cache []int, lt, mid, gt int) {
+func Merge(list []int, cache []int, lt, mid, gt int) {
     /*
     Since the original list is changed during the merge
     we have to copy items to the temporary list.
@@ -77,12 +74,4 @@ func merge(list []int, cache []int, lt, mid, gt int) {
             i++
         }
     }
-}
-
-func main() {
-    l := []int{9, 2, 5, 4, 7, 6}
-
-    sort(l)
-
-    fmt.Println("Sorted list ", l)
 }

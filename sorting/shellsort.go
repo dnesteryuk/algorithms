@@ -1,9 +1,7 @@
 // https://en.wikipedia.org/wiki/Shellsort
-package main
+package sorting
 
-import "fmt"
-
-func sort(list []int) {
+func ShellSort(list []int) {
     length := len(list)
     steps  := steps(length)
 
@@ -34,18 +32,4 @@ func steps(n int) []int {
     }
 
     return l
-}
-
-func swap(list []int, i int, j int) {
-    tmp := list[i]
-    list[i] = list[j]
-    list[j] = tmp
-}
-
-func main() {
-    l := []int{9, 2, 5, 4, 3, 1, 8, 7, 0, 6}
-
-    sort(l)
-
-    fmt.Println("Sorted list ", l)
 }

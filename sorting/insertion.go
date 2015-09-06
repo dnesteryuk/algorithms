@@ -1,9 +1,7 @@
 // https://en.wikipedia.org/wiki/Insertion_sort
-package main
+package sorting
 
-import "fmt"
-
-func sort(list []int) {
+func Insertion(list []int) {
     length := len(list)
 
     for i := 1; i < length; i++ {
@@ -23,18 +21,4 @@ func sort(list []int) {
             }
         }
     }
-}
-
-func swap(list []int, i int, j int) {
-    tmp := list[i]
-    list[i] = list[j]
-    list[j] = tmp
-}
-
-func main() {
-    l := []int{9, 2, 5, 4, 3, 1, 8, 7, 0, 6}
-
-    sort(l)
-
-    fmt.Println("Sorted list ", l)
 }
