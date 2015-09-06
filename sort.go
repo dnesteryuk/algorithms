@@ -8,12 +8,14 @@ import(
 )
 
 func main() {
-    alg := *flag.String("algorithm", "merge", "The algorithm to apply for sorting")
+    pAlg := flag.String("algorithm", "merge", "The algorithm to apply for sorting")
 
     flag.Parse()
 
     cli.RequireSortingArgs()
     list := cli.IntsArgs()
+
+    alg := *pAlg
 
     if alg == "merge" {
         sorting.MergeSort(list)
