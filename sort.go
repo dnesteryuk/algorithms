@@ -7,8 +7,12 @@ import(
     "cli"
 )
 
+func sort(list []int, f func([]int)) {
+    f(list)
+}
+
 func main() {
-    pAlg := flag.String("algorithm", "merge", "The algorithm to apply for sorting")
+    pAlg := flag.String("a", "merge", "The algorithm to apply for sorting [selection, insertion, shell, merge]")
 
     flag.Parse()
 
@@ -17,13 +21,14 @@ func main() {
 
     alg := *pAlg
 
-    if alg == "merge" {
-        sorting.MergeSort(list)
-    } else if alg == "selection" {
-        sorting.Selection(list)
-    } else if alg == "insertion" {
-        sorting.Insertion(list)
+    m := map[string]func(list []int) {
+        "selection": sorting.Selection,
+        "insertion": sorting.Insertion,
+        "shell": sorting.ShellSort,
+        "merge": sorting.MergeSort,
     }
+
+    sort(list, m[alg])
 
     fmt.Println("Algorithm:", alg)
     fmt.Println("Sorted list:", list)
