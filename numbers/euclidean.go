@@ -2,11 +2,13 @@
 
 package main
 
-import "os"
-import "fmt"
-import "strconv"
+import(
+    "fmt"
+    "cli"
+    "flag"
+)
 
-func gcd(a, b int) int {
+func Gcd(a, b int) int {
     for {
         x := a % b
 
@@ -20,13 +22,10 @@ func gcd(a, b int) int {
 }
 
 func main() {
-    if len(os.Args) < 3 {
-        fmt.Println("You must provide 2 distinct numbers as arguments to the program")
-        os.Exit(3)
-    }
+    flag.Parse()
 
-    a, _ := strconv.Atoi(os.Args[1])
-    b, _ := strconv.Atoi(os.Args[2])
+    cli.RequireArgs(2, "You must provide 2 distinct numbers as arguments to the program")
+    args := cli.IntsArgs()
 
-    fmt.Println("Greatest common divisor is", gcd(a, b))
+    fmt.Println("Greatest common divisor is", Gcd(args[0], args[1]))
 }

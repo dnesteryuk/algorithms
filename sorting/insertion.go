@@ -14,7 +14,7 @@ func Insertion(list []int) {
         if list[i - 1] > list[i] {
             for j := i; j > 0; j-- {
                 if list[j - 1] > list[j] {
-                    swap(list, j - 1, j);
+                    swap(list, j - 1, j)
                 } else {
                     break
                 }
