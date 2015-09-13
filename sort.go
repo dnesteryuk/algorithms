@@ -14,6 +14,7 @@ func sort(list []int, f func([]int)) {
 func main() {
     pAlg := flag.String("a", "merge", "The algorithm to apply for sorting [selection, insertion, shell, merge]")
 
+
     flag.Parse()
 
     cli.RequireSortingArgs()

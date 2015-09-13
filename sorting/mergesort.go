@@ -5,10 +5,10 @@ func MergeSort(list []int) {
     length := len(list)
     cache  := make([]int, length)
 
-    Sort(list, cache, 0, length - 1)
+    sort(list, cache, 0, length - 1)
 }
 
-func Sort(list []int, cache []int, lt, gt int) {
+func sort(list []int, cache []int, lt, gt int) {
     if lt >= gt {
         return
     }
@@ -19,8 +19,8 @@ func Sort(list []int, cache []int, lt, gt int) {
     Splits the list on the left and right parts
     to sort them separately.
     */
-    Sort(list, cache, lt, mid)
-    Sort(list, cache, mid + 1, gt)
+    sort(list, cache, lt, mid)
+    sort(list, cache, mid + 1, gt)
 
     /*
     Merges the left and right part together.
@@ -29,10 +29,10 @@ func Sort(list []int, cache []int, lt, gt int) {
     Example of the list on this step:
       [4,5,9, 1,6,7]
     */
-    Merge(list, cache, lt, mid, gt)
+    merge(list, cache, lt, mid, gt)
 }
 
-func Merge(list []int, cache []int, lt, mid, gt int) {
+func merge(list []int, cache []int, lt, mid, gt int) {
     /*
     Since the original list is changed during the merge
     we have to copy items to the temporary list.
