@@ -5,6 +5,7 @@ import(
     "os"
     "fmt"
     "strconv"
+    "exts"
 )
 
 func RequireArgs(minCount int, msg string) {
@@ -33,4 +34,11 @@ func IntsArgs() []int {
     }
 
     return list
+}
+
+func AlgorithmFlag(algs map[string]func(a []int), defaultAlg string) string {
+    possibleAlgs := exts.KeysAsString(algs)
+    alg := flag.String("a", defaultAlg, "The algorithm to be applied [" + possibleAlgs + "]")
+    flag.Parse()
+    return *alg
 }

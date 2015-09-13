@@ -1,15 +1,41 @@
 // https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
 
-package main
+package numbers
 
 import(
     "fmt"
-    "flag"
-    "cli"
     "math"
+    "cli"
 )
 
-func primeNumbers(start, end int) []int {
+func ESieve(args []int) {
+    cli.RequireArgs(1, "The number representing the limit is required.")
+
+    var start, end int
+
+    if len(args) == 1 {
+        start = 2
+        end = args[0]
+
+    } else {
+        start = args[0]
+        end = args[1]
+    }
+
+    if start > end {
+        start, end = end, start
+    }
+
+    // One is not a prime number
+    if start == 1 {
+        start = 2
+    }
+
+    numbers := GenPrimeNumbers(start, end)
+    fmt.Println("Prime numbers:", numbers)
+}
+
+func GenPrimeNumbers(start, end int) []int {
     list := make([]int, 0)
 
     for i := 2; i <= end; i++ {
@@ -41,25 +67,4 @@ func primeNumbers(start, end int) []int {
     }
 
     return numbers
-}
-
-func main() {
-    flag.Parse()
-
-    args := cli.IntsArgs()
-
-    start := args[0]
-    end := args[1]
-
-    if start > end {
-        start, end = end, start
-    }
-
-    // One is not a prime number
-    if start == 1 {
-        start = 2
-    }
-
-    numbers := primeNumbers(start, end)
-    fmt.Println("Prime numbers:", numbers)
 }

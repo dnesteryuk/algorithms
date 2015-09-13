@@ -1,6 +1,6 @@
 // https://en.wikipedia.org/wiki/Euclidean_algorithm
 
-package main
+package numbers
 
 import(
     "fmt"

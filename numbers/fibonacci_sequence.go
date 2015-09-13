@@ -1,8 +1,5 @@
-package main
-
-import(
-    "fmt"
-)
+// https://en.wikipedia.org/wiki/Fibonacci_number
+package numbers
 
 func GenFibonacci(limit int) []int {
     list := make([]int, 0)
@@ -28,9 +25,4 @@ func fibonacci() func() int {
 
         return x
     }
-}
-
-func main() {
-    list := GenFibonacci(10)
-    fmt.Println("list", list)
 }
