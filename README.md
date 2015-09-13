@@ -1,1 +1,1 @@
-It a repository to practice Golan and basic algorithms.
+It a repository to practice Golang and basic algorithms.
